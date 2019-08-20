@@ -21,6 +21,7 @@ A Webpack plugin that is used to update Webpack modules public path.
     },
     ```
 1. Change webpack public path on the fly.
+
     Webpack prefined a variable __webpack_public_path__.
     ```
     __webpack_public_path__ = window.location.pathname;
@@ -45,9 +46,9 @@ const UpdatePublicPathPlugin = require("webpack-update-public-path-plugin")
 ```
 
 ## After build
-This line will be added
+The following line will be added
 ```js
-/******/        __webpack_require__.p = '/foo/bar/';
+/******/        __webpack_require__.p = '/foo/bar';
 ```
 after
 ```js
@@ -55,7 +56,7 @@ after
 /******/        __webpack_require__.p = "/";
 ```
 
-Public path is changed to '/foo/bar/'.
+Public path is changed to '/foo/bar'.
 
 # Reason for this plugin
 In fact, I don't see so many usecases for this plugin.
