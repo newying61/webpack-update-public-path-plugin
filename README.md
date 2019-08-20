@@ -2,42 +2,62 @@
 
 A Webpack plugin that is used to update Webpack modules public path.
 
+## Ways to update web pack public path
+1. For Apps using create-react-app, add the homepage in package.json to change public path.
+    ```
+    "homepage": "/new-public-path",
+    ```
+    Also, this support relative path.
+    ```
+    "homepage": ".",
+    ```
+    Another way is define PUBLIC_URL environment variable somewhere in your build pipeline.
 
-Webpack now provide config to change public path.
-[See webpack guide page](https://webpack.js.org/guides/public-path/).
+1. Webpack now provide config to change public path. [See webpack guide page](https://webpack.js.org/guides/public-path/).
+    In webpack config file set output:
+    ```
+    output: {
+      publicPath: '/some-path'
+    },
+    ```
+1. Change webpack public path on the fly.
+    Webpack prefined a variable __webpack_public_path__.
+    ```
+    __webpack_public_path__ = window.location.pathname;
+    ```
 
-
-For Apps using Create-React-App, add the following line in package.json to change public path.
-```
-"homepage": "/new-public-path",
-```
+    This variable will be replaced by __webpack_require__.p in build time, that's how webpack changes the public path.
 
 ## Configuration
 
 ```
-const RuntimePublicPathPlugin = require("webpack-runtime-public-path-plugin")
+const UpdatePublicPathPlugin = require("webpack-update-public-path-plugin")
 ```
 
 ```json
     plugins: [
         ...
         new UpdatePublicPathPlugin({
-            publicPath: "'/foo/bar/'"
+            publicPath: JSON.stringify('/foo/bar/')
         })
         ...
     ]
 ```
 
-## Result
-
+## After build
+This line will be added
+```js
+/******/        __webpack_require__.p = '/foo/bar/';
+```
+after
 ```js
 /******/        // __webpack_public_path__
 /******/        __webpack_require__.p = "/";
 ```
 
-Will be replaced to:
+Public path is changed to '/foo/bar/'.
 
-```js
-/******/        // __webpack_public_path__
-/******/        __webpack_require__.p = '/foo/bar/';
-```
+# Reason for this plugin
+In fact, I don't see so many usecases for this plugin.
+
+Just other similar plugins are out of date, So providing one in case anyone needs it.
