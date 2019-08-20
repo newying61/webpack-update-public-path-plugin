@@ -2,6 +2,15 @@
 
 A Webpack plugin that is used to update Webpack modules public path.
 
+## install
+```
+npm i webpack-update-public-path-plugin
+```
+or
+```
+yarn add webpack-update-public-path-plugin
+```
+
 ## Ways to update web pack public path
 1. For Apps using create-react-app, add the homepage in package.json to change public path.
     ```
