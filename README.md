@@ -44,7 +44,7 @@ yarn add webpack-update-public-path-plugin
 const UpdatePublicPathPlugin = require("webpack-update-public-path-plugin")
 ```
 
-```json
+```js
     plugins: [
         ...
         new UpdatePublicPathPlugin({
