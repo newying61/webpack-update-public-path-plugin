@@ -6,8 +6,9 @@ function WebpackUpdatePublicPathPlugin(options) {
 function updatePublicPath(path, source) {
     var newSource = [];
     newSource.push(source);
-    newSource.push('');
-    newSource.push('__webpack_require__.p = ' + path + ';');
+    newSource.push('if( typeof __webpack_require__ !== "undefined" ) {');
+    newSource.push('    __webpack_require__.p = ' + path + ';');
+    newSource.push('}');
 
     return newSource.join('\n');
 }
