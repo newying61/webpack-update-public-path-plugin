@@ -1,6 +1,6 @@
 {
   "name": "webpack-update-public-path-plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Plugin used to update webpack public path",
   "main": "index.js",
   "scripts": {
