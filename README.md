@@ -31,7 +31,7 @@ yarn add webpack-update-public-path-plugin
     ```
 1. Change webpack public path on the fly.
 
-    Webpack prefined a variable \__webpack_public_path__.
+    Webpack prefined a variable \_\_webpack_public_path__.
     ```
     __webpack_public_path__ = window.location.pathname;
     ```
