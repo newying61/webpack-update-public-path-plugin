@@ -4,6 +4,8 @@ function WebpackUpdatePublicPathPlugin(options) {
 }
 
 function updatePublicPath(path, source) {
+    // Ensure empty assets do not become non-empty because of this plugin.
+    if(!source) { return source; }
     var newSource = [];
     newSource.push(source);
     newSource.push('if( typeof __webpack_require__ !== "undefined" ) {');
